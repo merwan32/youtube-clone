@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="https://www.youtube.com/s/desktop/1c192ebe/img/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Youtube-clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        *{
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden w-screen dark:bg-zinc-900">
+    <header class="flex justify-between w-full items-center h-14 p-4 sticky top-0 bg-white dark:bg-zinc-800 dark:text-white">
+            <div class="flex justify-around items-center">
+                <button onclick="menu()"><i class="material-icons mr-5 cursor-pointer">menu</i></button>
+                <img src=" {% static 'images/logo.png'%}" alt="youtube logo" class="cursor-pointer">
+            </div>
+            <div class="flex justify-center items-center ">
+                <input type="text" class="border border-gray-400 w-96 h-10 px-4 dark:bg-black" placeholder="Rechercher">
+                <button class="bg-gray-200 dark:bg-zinc-700 flex justify-center items-center h-10 w-16 border-y border-zinc-700">
+                    <i class="material-icons">search</i>
+                </button>
+                <button class="bg-gray-50 dark:bg-zinc-700 flex justify-center items-center rounded-full h-10 w-10 ml-4">
+                    <i class="material-icons">mic</i>
+                </button>
+            </div>
+            <div class="flex w-40 items-center justify-between">
+                <span class="material-icons cursor-pointer">video_call</span>
+                <span class="material-icons cursor-pointer">apps</span>
+                <span class="material-icons cursor-pointer">notifications</span>
+                <span class="material-icons cursor-pointer">account_circle</span>
+            </div>
+    </header>
+    <div class="filtrer bg-white sticky top-14 ml-60 w-screen h-16 border-b border-t border-gray-600 flex items-center justify-self-start dark:bg-zinc-800">
+        <button class="bg-gray-900 dark:bg-white  text-white dark:text-black px-2 py-1 rounded-2xl mx-1.5 h-8 w-fit  truncate">Tous</button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">Mix</button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">En direct</button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">Javascript</button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">Python</button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">Tailwind</button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">Full stack developper </button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">Css</button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">Js</button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">Backend</button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">Django</button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">Dark web</button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">github</button>
+        <button class="bg-gray-200 dark:bg-zinc-700 dark:text-white px-2 py-1 rounded-2xl border border-gray-400 mx-1.5 h-8 w-fit  truncate">learn git and github</button>
+    </div>
+    
+    
+    <div class="content w-full flex dark:text-white">
+        <section class="sidebar w-60 sticky top-14 -mt-16 bg-white h-full flex flex-col items-center dark:bg-zinc-800 ">
+            <p class="bg-zinc-600 h-10 mx-20 w-full flex items-center justify-start cursor-pointer text-sm"><i class="material-icons px-6">home</i>Accueil</p>
+            <p class="hover:bg-zinc-600  h-10 w-full flex items-center justify-start cursor-pointer text-sm"><i class="material-icons px-6">explore</i>Explore</p>
+            <p class="hover:bg-zinc-600 h-10 w-full flex items-center justify-start cursor-pointer text-sm"><i class="material-icons px-6">music_video</i>Shorts</p>
+            <p class="hover:bg-zinc-600 h-10 w-full flex items-center justify-start cursor-pointer text-sm  border-b border-gray-600"><i class="material-icons px-6">movie_filter</i>Abonnements</p>
+            <p class="hover:bg-zinc-600  h-10 w-full flex items-center justify-start cursor-pointer text-sm"><i class="material-icons px-6">movie</i>Bibliothèque</p>
+            <p class="hover:bg-zinc-600 h-10 w-full flex items-center justify-start cursor-pointer text-sm"><i class="material-icons px-6">history</i>Historique</p>
+            <p class="hover:bg-zinc-600  h-10 w-full flex items-center justify-start cursor-pointer text-sm"><i class="material-icons px-6">slideshow</i>Vos vidéos</p>
+            <p class="hover:bg-zinc-600 h-10 w-full flex items-center justify-start cursor-pointer text-sm"><i class="material-icons px-6">watch_later</i>À regarder plus tard</p>
+            <p class="hover:bg-zinc-600 h-10 w-full flex items-center justify-start cursor-pointer text-sm  border-b border-gray-600"><i class="material-icons px-6">thumb_up_off_alt</i>Vidéos "J'aime"</p>
+        </section>
+        <div class="feed p-6 flex  flex-col justify-between overflow-hidden">
+            <div class="row w-full flex">
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row w-full flex">
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row w-full flex">
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row w-full flex">
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row w-full flex">
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vedeo-preview w-1\/4 h-60 mx-3">
+                    <img class="w-full" src="https://i.ytimg.com/vi/-I0SCL8R2FU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApGPdHCjb3UfamZdOfqgTQvRUH9A" alt="">
+                    <div class="credit flex items-center mt-3">
+                        <img class="w-9 rounded-full" src="https://yt3.ggpht.com/ev1XrUYVyn0mUbll5zSDYX-T4RAH2vLoJZuJkCPEjHa2HhE3RK4Ln5-Cd0XLEnUYrzUmRC16VJQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                        <div class="txt ml-3">
+                            <div class="title text-base">RAI VS REALITY 3</div>
+                            <div class="name text-sm text-gray-500">Morad Oudia Two</div>
+                            <div class="vues text-sm text-gray-500">19k vues . il y a 3 heures</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    sidebarelem = document.getElementsByTagName('p')
+    sidebar = document.getElementsByTagName('section')
+    filtrer = document.getElementsByClassName('filtrer')
+    feed = document.getElementsByClassName('feed')
+    sideshow = true
+    function menu() {
+        if (sideshow) {
+            sidebar[0].style.width ="72px"
+            filtrer[0].style.marginLeft ="72px"
+            i=0
+            Array.from(sidebarelem).forEach(e => {
+                e.classList.remove('text-sm')
+                e.classList.add('text-xs')
+                e.classList.add('flex-col')
+                e.style.marginBottom = "25px"
+                if (i>4) {
+                    e.style.display="none"
+                }
+                i++
+            });
+            sideshow = false
+        } else {
+            sidebar[0].style.width ="240px"
+            filtrer[0].style.marginLeft ="240px"
+            i=0
+            Array.from(sidebarelem).forEach(e => {
+                e.classList.remove('text-xs')
+                e.classList.add('text-sm')
+                e.classList.add('flex-row')
+                e.classList.remove('flex-col')
+                e.style.marginBottom = "0px"
+                if (i>4) {
+                    e.style.display="flex"
+                }
+                i++
+            });
+            sideshow = true
+        }
+    }
+
+
+</script>
+</html>

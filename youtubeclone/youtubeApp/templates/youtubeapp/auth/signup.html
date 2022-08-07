@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube-clone | sign-up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="bg-grey-lighter min-h-screen flex flex-col">
+        <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <form action="" method="POST" class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                {% csrf_token %}
+                {%if messages%}
+                {% for msg in messages%}
+                <div class="bg-red-500 w-full h-10 rounded-lg ">
+                    <h1 class="text-white px-4 p-2 text-xl">{{msg}}</h1>
+                </div>
+                {%endfor%}
+                {% endif%}
+                <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+                <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4"
+                    name="username"
+                    placeholder="User Name" />
+
+                <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4"
+                    name="email"
+                    placeholder="Email" />
+
+                <input 
+                    type="password"
+                    class="block border border-grey-light w-full p-3 rounded mb-4"
+                    name="password"
+                    placeholder="Password" />
+                <input 
+                    type="password"
+                    class="block border border-grey-light w-full p-3 rounded mb-4"
+                    name="confirm_password"
+                    placeholder="Confirm Password" />
+
+                <button
+                    type="submit"
+                    class="w-full text-center py-3 rounded bg-green-400 text-white hover:bg-green-700 focus:outline-none my-1"
+                >Create Account</button>
+
+                <div class="text-center text-sm text-grey-dark mt-4">
+                    By signing up, you agree to the 
+                    <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                        Terms of Service
+                    </a> and 
+                    <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                        Privacy Policy
+                    </a>
+                </div>
+            </form>
+
+            <div class="text-grey-dark mt-6">
+                Already have an account? 
+                <a class="no-underline border-b border-blue text-blue" href="../login/">
+                    Log in
+                </a>.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
